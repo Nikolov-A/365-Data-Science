@@ -1,0 +1,61 @@
+### ASSIGNMENT ###
+
+/*
+------ 1 ------
+
+Drop the “customers” table, and then recreate it using the following code.
+
+CREATE TABLE customers (
+
+    customer_id INT AUTO_INCREMENT,
+
+    first_name VARCHAR(255),
+
+    last_name VARCHAR(255),
+
+    email_address VARCHAR(255),
+
+    number_of_complaints INT,
+
+PRIMARY KEY (customer_id)
+
+);
+*/ 
+
+DROP TABLE IF EXISTS customers;
+
+CREATE TABLE customers
+(
+	customer_id INT AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email_address VARCHAR(255),
+    number_of_complaints INT,
+PRIMARY KEY (customer_id)
+);
+
+
+
+/*
+------ 2 ------
+
+Then run the following code that will add a “gender” column in the “customers” table, and will then insert a new record in it. Don’t worry if you don’t understand the meaning of the code perfectly – we will discuss these structures later on in the course in more detail. We will just use them now to insert a row in our “customers” table.
+
+ ALTER TABLE customers
+
+ADD COLUMN gender ENUM('M', 'F') AFTER last_name;
+
+ 
+
+INSERT INTO customers (first_name, last_name, gender, email_address, number_of_complaints)
+
+VALUES ('John', 'Mackinley', 'M', 'john.mckinley@365datascience.com', 0)
+
+;
+*/
+
+ALTER TABLE customers
+ADD COLUMN gender ENUM('M', 'F') AFTER last_name;
+
+INSERT INTO customers (first_name, last_name, gender, email_address, number_of_complaints)
+VALUES ('John', 'Mackinley', 'M', 'john.mckinley@365datascinece.com', 0);
