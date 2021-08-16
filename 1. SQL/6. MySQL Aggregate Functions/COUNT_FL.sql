@@ -1,3 +1,5 @@
+-- following the lecture --
+
 USE employees;
 
 SELECT 
