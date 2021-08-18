@@ -97,5 +97,3 @@ DELETE FROM departments_dup
 WHERE
    dept_no = 'd002';
    
-SELECT * FROM departments_dup;
-
