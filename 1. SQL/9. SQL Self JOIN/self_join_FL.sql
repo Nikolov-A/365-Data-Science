@@ -19,3 +19,15 @@ WHERE
             manager_no
         FROM
             emp_manager);
+            
+-- method 2 --
+
+SELECT 
+    m.*
+FROM
+    emp_manager e
+        JOIN
+    emp_manager m ON e.emp_no = m.manager_no
+ORDER BY m.emp_no DESC
+LIMIT 2;
+
