@@ -42,12 +42,12 @@ WHERE
 
 -- step 3 create function --
 
-DROP FUNCTION IF EXISTS f_emp_info_2;
+DROP FUNCTION IF EXISTS f_emp_info;
 
 
 DELIMITER $$
 
-CREATE FUNCTION f_emp_info_2(p_first_name VARCHAR(255), p_last_name VARCHAR(255)) RETURNS DECIMAL(10,2)
+CREATE FUNCTION f_emp_info(p_first_name VARCHAR(255), p_last_name VARCHAR(255)) RETURNS DECIMAL(10,2)
 
 BEGIN
 
@@ -82,4 +82,70 @@ DELIMITER ;
 
 -- check --
 
-SELECT f_emp_info_2('Aruna', 'Journel');
+SELECT f_emp_info('Aruna', 'Verspoor');
+
+
+############# METHOD 2 ###########
+
+-- create desired query --
+
+SELECT 
+    s.salary
+FROM
+    employees e
+        JOIN
+    salaries s ON e.emp_no = s.emp_no
+WHERE
+    e.first_name = 'Aruna'
+        AND e.last_name = 'Verspoor'
+        AND s.from_date IN (SELECT -- table with all salaries for all contracts -- 
+            MAX(from_date)
+        FROM
+            employees e
+                JOIN
+            salaries s ON e.emp_no = s.emp_no
+        GROUP BY e.emp_no)
+ORDER BY salary DESC
+LIMIT 1;
+
+-- create function --
+
+DROP FUNCTION IF EXISTS f_emp_info_2;
+
+DELIMITER $$
+				
+CREATE FUNCTION f_emp_info_2(p_first_name VARCHAR(255), p_last_name VARCHAR(255)) RETURNS DECIMAL(10,2)
+
+BEGIN
+
+	DECLARE v_salary DECIMAL(10,2);
+
+SELECT 
+    s.salary
+INTO v_salary FROM
+    employees e
+        JOIN
+    salaries s ON e.emp_no = s.emp_no
+WHERE
+    e.first_name = p_first_name
+        AND e.last_name = p_last_name
+        AND s.from_date IN (SELECT 
+            MAX(from_date)
+        FROM
+            employees e
+                JOIN
+            salaries s ON e.emp_no = s.emp_no
+        GROUP BY e.emp_no)
+ORDER BY salary DESC
+LIMIT 1;
+
+	
+               RETURN v_salary;
+END$$
+
+DELIMITER ;
+
+
+-- check --
+
+SELECT F_EMP_INFO_2('Aruna', 'Verspoor');
