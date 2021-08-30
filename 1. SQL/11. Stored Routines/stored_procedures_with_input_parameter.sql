@@ -18,7 +18,7 @@ BEGIN
 		WHERE
 			e.emp_no = p_emp_no;
 			
-    END$$
+END$$
 
 DELIMITER ;
 
@@ -43,11 +43,13 @@ CREATE PROCEDURE emp_avg_salary(IN p_emp_no INTEGER)
 
 BEGIN
 		SELECT 
-			round(AVG(salary),2)
+			e.first_name, e.last_name, round(AVG(salary),2) AS avg_salary
 		FROM
-			salaries
+			employees e
+				JOIN
+			salaries s ON e.emp_no = s.emp_no
 		WHERE
-			emp_no = p_emp_no; 
+			e.emp_no = p_emp_no; 
 END$$
 
 DELIMITER ;
