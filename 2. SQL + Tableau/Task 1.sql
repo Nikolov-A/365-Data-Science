@@ -8,6 +8,9 @@ Create a visualization that provides a breakdown between the male and female emp
 
 */
 
+-- The visualization can be found there --
+-- https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/Employees?publish=yes -- 
+
 -- Create a desired query and extract it as csv -- 
 
 SELECT 
@@ -22,5 +25,3 @@ WHERE
     YEAR(de.from_date) >= 1990
 GROUP BY calendar_year , gender;
 
--- The visualization can be found there --
--- https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/Employees?publish=yes -- 
