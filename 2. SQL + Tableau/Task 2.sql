@@ -8,9 +8,6 @@ Create a visualization that compares the number of male managers to the number o
 
 */
 
--- The visualization can be found there --
--- https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/ActiveManagers?publish=yes --
-
 -- activate database --
 
 USE employees_mod;
@@ -59,7 +56,8 @@ FROM
 GROUP BY m.emp_no , calendar_year
 ORDER BY m.emp_no , calendar_year;
 
-
+-- The visualization can be found there --
+https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/ActiveManagers?publish=yes
         
 
         

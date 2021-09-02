@@ -59,7 +59,7 @@ HAVING calendar_year <= 2002
 ORDER BY gender , dept_name , calendar_year;
 
 -- The visualization can be found there --
--- https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/AVGSalary?publish=yes --
+https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/AVGSalary?publish=yes
 
 
 
