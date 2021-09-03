@@ -1,0 +1,3 @@
+-- Create dashboard with all 4 charts --
+
+https://public.tableau.com/app/profile/alex6736/viz/SQLTableaue-Task1/Dashboard1?publish=yes
